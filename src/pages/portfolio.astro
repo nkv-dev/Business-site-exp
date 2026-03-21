@@ -1,0 +1,72 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import CtaSection from '@/components/home/CtaSection.astro';
+import { ArrowUpRight } from 'lucide-react';
+
+const projects = [
+  {
+    title: 'Nexus Fintech',
+    category: 'Landing Page',
+    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop',
+    span: 'col-span-1 md:col-span-2'
+  },
+  {
+    title: 'Lumina Tech Summit',
+    category: 'Event Website',
+    image: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?q=80&w=2070&auto=format&fit=crop',
+    span: 'col-span-1'
+  },
+  {
+    title: 'Aura Lifestyle',
+    category: 'Digital Catalogue',
+    image: 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?q=80&w=2070&auto=format&fit=crop',
+    span: 'col-span-1'
+  },
+  {
+    title: 'Oasis Wellness',
+    category: 'E-Commerce',
+    image: 'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=2020&auto=format&fit=crop',
+    span: 'col-span-1 md:col-span-2'
+  }
+];
+---
+
+<Layout title="Our Portfolio | Acme Studio" description="View our selected works and client success stories.">
+  <div class="pt-32 pb-24 relative overflow-hidden">
+    <div class="absolute top-1/2 right-0 w-[40rem] h-[40rem] bg-indigo-500/10 rounded-full blur-[120px] pointer-events-none" />
+    
+    <div class="container mx-auto px-4 md:px-8 relative z-10">
+      <div class="max-w-3xl mb-16">
+        <h1 class="text-5xl md:text-7xl font-heading font-extrabold tracking-tight mb-6">
+          Selected <span class="text-gradient">Works</span>
+        </h1>
+        <p class="text-xl text-muted-foreground leading-relaxed">
+          Explore our recent projects spanning multiple industries. We pride ourselves on delivering aesthetic excellence paired with incredible performance.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {projects.map((project) => (
+          <a href="#" class={`group block relative overflow-hidden rounded-[2.5rem] min-h-[400px] md:min-h-[500px] bg-muted/20 border border-white/5 ${project.span}`}>
+            <div class="absolute inset-0 z-10 bg-gradient-to-t from-background via-background/20 to-transparent opacity-80 group-hover:opacity-90 transition-opacity duration-500" />
+            <img 
+              src={project.image} 
+              alt={project.title} 
+              class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" 
+            />
+            <div class="absolute bottom-0 left-0 w-full p-8 md:p-12 z-20 flex justify-between items-end translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+              <div>
+                <p class="text-primary font-medium mb-3 tracking-wide text-sm uppercase">{project.category}</p>
+                <h3 class="text-3xl font-heading font-bold text-white">{project.title}</h3>
+              </div>
+              <div class="w-14 h-14 rounded-full glass flex items-center justify-center text-white border border-white/20 group-hover:bg-primary group-hover:border-primary transition-colors duration-300 shadow-xl shrink-0">
+                <ArrowUpRight size={28} />
+              </div>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </div>
+  <CtaSection />
+</Layout>
