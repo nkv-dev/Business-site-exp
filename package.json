@@ -7,7 +7,7 @@
   },
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build && cp -rf dist/client/* dist/ && cp -f dist/server/entry.mjs dist/_worker.js && cp -rf dist/server/chunks dist/",
+    "build": "astro build && cp -rf dist/client/* dist/ && cp -rf dist/server/* dist/ && mv dist/entry.mjs dist/_worker.js && rm -f dist/wrangler.json",
     "preview": "astro preview",
     "astro": "astro",
     "generate-types": "wrangler types"
