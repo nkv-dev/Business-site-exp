@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, Code2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger, SheetTitle, SheetDescription } from '@/components/ui/sheet';
+import { ThemeToggle } from './ThemeToggle';
 
 const navLinks = [
   { name: 'Home', href: '/' },
@@ -51,18 +52,20 @@ export function Navbar() {
               <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all group-hover:w-full"></span>
             </a>
           ))}
-          <Button className="rounded-full px-6 bg-primary text-primary-foreground hover:bg-primary/90 shadow-[0_0_20px_rgba(168,85,247,0.4)] hover:shadow-[0_0_30px_rgba(168,85,247,0.6)] hover:-translate-y-0.5 transition-all duration-300">
-            Get Started
-          </Button>
+          <div className="flex items-center gap-4">
+            <ThemeToggle />
+            <Button className="rounded-full px-6 bg-primary text-primary-foreground hover:bg-primary/90 shadow-[0_0_20px_rgba(168,85,247,0.4)] hover:shadow-[0_0_30px_rgba(168,85,247,0.6)] hover:-translate-y-0.5 transition-all duration-300">
+              Get Started
+            </Button>
+          </div>
         </nav>
 
         {/* Mobile Nav */}
-        <div className="md:hidden">
+        <div className="md:hidden flex items-center gap-2">
+          <ThemeToggle />
           <Sheet>
-            <SheetTrigger asChild>
-              <Button variant="ghost" size="icon" className="text-foreground relative z-10">
-                <Menu size={24} />
-              </Button>
+            <SheetTrigger render={<Button variant="ghost" size="icon" className="text-foreground relative z-10" />}>
+              <Menu size={24} />
             </SheetTrigger>
             <SheetContent side="right" className="glass-card border-none sm:w-[300px] w-[250px] flex flex-col justify-center h-full">
               <SheetTitle className="sr-only">Navigation Menu</SheetTitle>
