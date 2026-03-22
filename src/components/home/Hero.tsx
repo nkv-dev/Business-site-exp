@@ -39,10 +39,10 @@ export function Hero() {
         className="absolute bottom-1/4 right-1/4 w-[25rem] h-[25rem] md:w-[35rem] md:h-[35rem] bg-indigo-500/20 rounded-full blur-[100px] pointer-events-none origin-top-left" 
       />
 
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-[50rem] bg-[radial-gradient(ellipse_at_center,rgba(255,255,255,0.03)_0%,transparent_70%)] pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-[50rem] bg-[radial-gradient(ellipse_at_center,rgba(128,128,128,0.1)_0%,transparent_70%)] pointer-events-none" />
 
       {/* Grid Pattern overlay for premium tech feel */}
-      <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,black,transparent)] pointer-events-none" />
+      <div className="absolute inset-0 bg-[linear-gradient(rgba(128,128,128,0.1)_1px,transparent_1px),linear-gradient(90deg,rgba(128,128,128,0.1)_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,black,transparent)] pointer-events-none" />
 
       <div className="container mx-auto px-4 md:px-8 relative z-10">
         <motion.div 

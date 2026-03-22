@@ -32,7 +32,7 @@ export function PortfolioPreview() {
   };
 
   return (
-    <section className="py-24 bg-black/20 relative overflow-hidden">
+    <section className="py-24 bg-secondary/30 relative overflow-hidden">
       {/* Decor ring */}
       <div className="absolute top-0 right-0 w-[50rem] h-[50rem] border-[1px] border-primary/10 rounded-full -translate-y-1/2 translate-x-1/2 pointer-events-none" />
       
@@ -65,7 +65,7 @@ export function PortfolioPreview() {
               href="#"
               className="group block relative overflow-hidden rounded-3xl aspect-[4/5] bg-muted/20 border border-white/5"
             >
-              <div className="absolute inset-0 z-10 bg-gradient-to-t from-background/90 via-background/20 to-transparent opacity-80 group-hover:opacity-90 transition-opacity duration-500" />
+              <div className="absolute inset-0 z-10 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-80 group-hover:opacity-90 transition-opacity duration-500" />
               <img 
                 src={project.image} 
                 alt={project.title} 
