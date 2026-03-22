@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { ArrowRight, Sparkles } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { InteractiveWindow } from './InteractiveWindow';
 
 export function Hero() {
   const containerVariants = {
@@ -45,12 +46,13 @@ export function Hero() {
       <div className="absolute inset-0 bg-[linear-gradient(rgba(128,128,128,0.1)_1px,transparent_1px),linear-gradient(90deg,rgba(128,128,128,0.1)_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,black,transparent)] pointer-events-none" />
 
       <div className="container mx-auto px-4 md:px-8 relative z-10">
-        <motion.div 
-          className="max-w-4xl mx-auto flex flex-col items-center text-center"
-          variants={containerVariants}
-          initial="hidden"
-          animate="visible"
-        >
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-8 items-center max-w-7xl mx-auto">
+          <motion.div 
+            className="flex flex-col items-center lg:items-start text-center lg:text-left"
+            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
+          >
           <motion.div variants={itemVariants} className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass border-primary/20 text-primary mb-8 text-sm font-medium relative overflow-hidden group">
             <div className="absolute inset-0 bg-primary/10 translate-y-full group-hover:translate-y-0 transition-transform duration-300 pointer-events-none" />
             <Sparkles size={16} />
@@ -59,23 +61,23 @@ export function Hero() {
           
           <motion.h1 
             variants={itemVariants}
-            className="text-5xl md:text-7xl lg:text-8xl font-heading font-extrabold tracking-tight mb-8 leading-[1.1]"
+            className="text-5xl md:text-7xl lg:text-7xl xl:text-8xl font-heading font-extrabold tracking-tight mb-8 leading-[1.1]"
           >
-            We Build <br className="hidden md:block" />
+            We Build <br className="hidden lg:block md:hidden block" />
             <span className="text-gradient">Premium Websites</span>
             <br /> That Convert.
           </motion.h1>
           
           <motion.p 
             variants={itemVariants} 
-            className="text-lg md:text-xl text-muted-foreground max-w-2xl mb-12 leading-relaxed"
+            className="text-lg md:text-xl text-muted-foreground lg:max-w-xl mx-auto lg:mx-0 mb-12 leading-relaxed"
           >
             Elevate your brand with blazing-fast landing pages, event websites, and catalogues designed to leave a lasting impression.
           </motion.p>
           
           <motion.div 
             variants={itemVariants} 
-            className="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto"
+            className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 w-full sm:w-auto"
           >
             <Button size="lg" className="w-full sm:w-auto rounded-full bg-primary text-primary-foreground hover:bg-primary/90 shadow-[0_0_30px_rgba(168,85,247,0.4)] hover:shadow-[0_0_45px_rgba(168,85,247,0.6)] hover:-translate-y-1 transition-all duration-300 h-14 px-8 text-lg font-medium group">
               Start Your Project
@@ -86,6 +88,16 @@ export function Hero() {
             </Button>
           </motion.div>
         </motion.div>
+
+        <motion.div
+           initial={{ opacity: 0, x: 50 }}
+           animate={{ opacity: 1, x: 0 }}
+           transition={{ duration: 1, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
+           className="relative hidden lg:block"
+        >
+           <InteractiveWindow />
+        </motion.div>
+        </div>
       </div>
     </section>
   );
