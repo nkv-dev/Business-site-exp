@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
-import { useRef } from "react";
+import { useRef, useEffect } from "react";
 import { Sparkles, Code2, Globe } from "lucide-react";
 
 export function InteractiveWindow() {
@@ -10,40 +10,48 @@ export function InteractiveWindow() {
   const x = useMotionValue(0);
   const y = useMotionValue(0);
 
-  const mouseXSpring = useSpring(x, { stiffness: 150, damping: 20 });
-  const mouseYSpring = useSpring(y, { stiffness: 150, damping: 20 });
+  const mouseXSpring = useSpring(x, { stiffness: 300, damping: 30 });
+  const mouseYSpring = useSpring(y, { stiffness: 300, damping: 30 });
 
   const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ["15deg", "-15deg"]);
   const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ["-15deg", "15deg"]);
   const translateX = useTransform(mouseXSpring, [-0.5, 0.5], ["-10px", "10px"]);
   const translateY = useTransform(mouseYSpring, [-0.5, 0.5], ["-10px", "10px"]);
 
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
-    if (!ref.current) return;
-    const rect = ref.current.getBoundingClientRect();
-    const width = rect.width;
-    const height = rect.height;
-    const mouseX = e.clientX - rect.left;
-    const mouseY = e.clientY - rect.top;
+  useEffect(() => {
+    const handleGlobalMouseMove = (e: MouseEvent) => {
+      const width = window.innerWidth;
+      const height = window.innerHeight;
 
-    const xPct = (mouseX / width) - 0.5;
-    const yPct = (mouseY / height) - 0.5;
+      // Calculate percentage from center of screen (-0.5 to 0.5)
+      const xPct = (e.clientX / width) - 0.5;
+      const yPct = (e.clientY / height) - 0.5;
 
-    x.set(xPct);
-    y.set(yPct);
-  };
+      x.set(xPct);
+      y.set(yPct);
+    };
 
-  const handleMouseLeave = () => {
-    x.set(0);
-    y.set(0);
-  };
+    const handleGlobalMouseLeave = (e: MouseEvent) => {
+      if (e.relatedTarget === null) {
+        // Mouse left the viewport completely
+        x.set(0);
+        y.set(0);
+      }
+    };
+
+    window.addEventListener("mousemove", handleGlobalMouseMove);
+    window.addEventListener("mouseout", handleGlobalMouseLeave);
+
+    return () => {
+      window.removeEventListener("mousemove", handleGlobalMouseMove);
+      window.removeEventListener("mouseout", handleGlobalMouseLeave);
+    };
+  }, [x, y]);
 
   return (
     <div className="[perspective:1000px] flex items-center justify-center p-4">
       <motion.div
         ref={ref}
-        onMouseMove={handleMouseMove}
-        onMouseLeave={handleMouseLeave}
         style={{
           rotateX,
           rotateY,
@@ -51,7 +59,7 @@ export function InteractiveWindow() {
           y: translateY,
           transformStyle: "preserve-3d",
         }}
-        className="relative w-full max-w-xl aspect-[16/10] rounded-2xl border border-white/20 glass-card bg-background/80 shadow-[0_20px_60px_-15px_var(--color-primary)] transition-shadow duration-500"
+        className="relative w-full max-w-xl aspect-[16/10] rounded-2xl border border-white/20 bg-background/60 backdrop-blur-xl shadow-[0_20px_60px_-15px_var(--color-primary)] transition-[box-shadow] duration-500"
       >
         {/* Inner flat container for clipping background/header cleanly */}
         <div className="absolute inset-0 overflow-hidden rounded-2xl z-0">
@@ -90,7 +98,7 @@ export function InteractiveWindow() {
         {/* Floating badge for extreme 3D effect */}
         <motion.div 
             style={{ transform: "translateZ(80px)" }}
-            className="absolute -right-4 -bottom-4 lg:-right-8 lg:-bottom-6 bg-background border border-primary/30 glass-card p-4 rounded-xl shadow-[0_30px_60px_-15px_var(--color-primary)] flex items-center gap-3 z-30 pointer-events-none"
+            className="absolute -right-4 -bottom-4 lg:-right-8 lg:-bottom-6 bg-background/80 backdrop-blur-xl border border-primary/30 p-4 rounded-xl shadow-[0_30px_60px_-15px_var(--color-primary)] flex items-center gap-3 z-30 pointer-events-none"
         >
             <div className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center text-primary">
                 <Sparkles size={24} />
