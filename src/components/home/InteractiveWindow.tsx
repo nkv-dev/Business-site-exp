@@ -13,8 +13,10 @@ export function InteractiveWindow() {
   const mouseXSpring = useSpring(x, { stiffness: 150, damping: 20 });
   const mouseYSpring = useSpring(y, { stiffness: 150, damping: 20 });
 
-  const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ["10deg", "-10deg"]);
-  const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ["-10deg", "10deg"]);
+  const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ["15deg", "-15deg"]);
+  const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ["-15deg", "15deg"]);
+  const translateX = useTransform(mouseXSpring, [-0.5, 0.5], ["-10px", "10px"]);
+  const translateY = useTransform(mouseYSpring, [-0.5, 0.5], ["-10px", "10px"]);
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     if (!ref.current) return;
@@ -45,22 +47,27 @@ export function InteractiveWindow() {
         style={{
           rotateX,
           rotateY,
+          x: translateX,
+          y: translateY,
           transformStyle: "preserve-3d",
         }}
-        className="relative w-full max-w-xl aspect-[16/10] rounded-2xl border border-white/20 glass-card bg-background/80 overflow-hidden shadow-[0_20px_60px_-15px_var(--color-primary)] transition-shadow duration-500"
+        className="relative w-full max-w-xl aspect-[16/10] rounded-2xl border border-white/20 glass-card bg-background/80 shadow-[0_20px_60px_-15px_var(--color-primary)] transition-shadow duration-500"
       >
-        {/* Browser Header */}
-        <div className="absolute top-0 w-full h-12 border-b border-border/50 glass flex items-center px-4 gap-2 z-20">
-          <div className="w-3 h-3 rounded-full bg-red-400" />
-          <div className="w-3 h-3 rounded-full bg-amber-400" />
-          <div className="w-3 h-3 rounded-full bg-green-400" />
-          <div className="mx-auto flex items-center gap-2 bg-black/10 dark:bg-white/5 rounded-md px-4 py-1.5 text-xs text-muted-foreground mr-16">
-            <Globe size={14} /> example.com
+        {/* Inner flat container for clipping background/header cleanly */}
+        <div className="absolute inset-0 overflow-hidden rounded-2xl z-0">
+          {/* Browser Header */}
+          <div className="absolute top-0 w-full h-12 border-b border-border/50 glass flex items-center px-4 gap-2 z-20">
+            <div className="w-3 h-3 rounded-full bg-red-400" />
+            <div className="w-3 h-3 rounded-full bg-amber-400" />
+            <div className="w-3 h-3 rounded-full bg-green-400" />
+            <div className="mx-auto flex items-center gap-2 bg-black/10 dark:bg-white/5 rounded-md px-4 py-1.5 text-xs text-muted-foreground mr-16">
+              <Globe size={14} /> example.com
+            </div>
           </div>
         </div>
 
-        {/* Browser Content container pushing down below header */}
-        <div className="absolute inset-0 pt-12 px-6 pb-6 overflow-hidden flex flex-col gap-4 z-10" style={{ transform: "translateZ(30px)" }}>
+        {/* Browser Content container popping out slightly in 3D */}
+        <div className="absolute inset-0 pt-12 px-6 pb-6 flex flex-col gap-4 z-10 pointer-events-none" style={{ transform: "translateZ(40px)" }}>
             {/* Header Mockup */}
             <div className="w-full flex justify-between items-center mt-4">
                 <div className="w-32 h-6 rounded-md bg-primary/20 animate-pulse" />
@@ -80,10 +87,10 @@ export function InteractiveWindow() {
             </div>
         </div>
         
-        {/* Floating badge for 3D effect */}
+        {/* Floating badge for extreme 3D effect */}
         <motion.div 
-            style={{ transform: "translateZ(60px)" }}
-            className="absolute -right-4 -bottom-4 lg:-right-8 lg:-bottom-6 bg-background border border-border/50 glass-card p-4 rounded-xl shadow-xl flex items-center gap-3 z-30"
+            style={{ transform: "translateZ(80px)" }}
+            className="absolute -right-4 -bottom-4 lg:-right-8 lg:-bottom-6 bg-background border border-primary/30 glass-card p-4 rounded-xl shadow-[0_30px_60px_-15px_var(--color-primary)] flex items-center gap-3 z-30 pointer-events-none"
         >
             <div className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center text-primary">
                 <Sparkles size={24} />
