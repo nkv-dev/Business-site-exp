@@ -23,21 +23,21 @@ export function Hero() {
       <motion.div 
         animate={{ 
           rotate: 360,
-          scale: [1, 1.2, 1],
-          opacity: [0.2, 0.35, 0.2]
+          scale: [1, 1.1, 1],
+          opacity: [0.2, 0.3, 0.2]
         }}
-        transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-        className="absolute top-1/4 left-1/4 w-[20rem] h-[20rem] md:w-[30rem] md:h-[30rem] bg-primary/30 rounded-full blur-[100px] pointer-events-none origin-bottom-right" 
+        transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
+        className="absolute top-1/4 left-1/4 w-[15rem] h-[15rem] md:w-[30rem] md:h-[30rem] bg-primary/30 rounded-full blur-[60px] md:blur-[120px] pointer-events-none origin-bottom-right will-change-transform" 
       />
       
       <motion.div 
         animate={{ 
           rotate: -360,
-          scale: [1, 1.3, 1],
-          opacity: [0.2, 0.3, 0.2]
+          scale: [1, 1.1, 1],
+          opacity: [0.15, 0.25, 0.15]
         }}
-        transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
-        className="absolute bottom-1/4 right-1/4 w-[25rem] h-[25rem] md:w-[35rem] md:h-[35rem] bg-indigo-500/20 rounded-full blur-[100px] pointer-events-none origin-top-left" 
+        transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
+        className="absolute bottom-1/4 right-1/4 w-[18rem] h-[18rem] md:w-[35rem] md:h-[35rem] bg-indigo-500/20 rounded-full blur-[60px] md:blur-[120px] pointer-events-none origin-top-left will-change-transform" 
       />
 
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-[50rem] bg-[radial-gradient(ellipse_at_center,rgba(128,128,128,0.1)_0%,transparent_70%)] pointer-events-none" />

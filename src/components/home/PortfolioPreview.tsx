@@ -6,17 +6,17 @@ const projects = [
   {
     title: 'Nexus Fintech',
     category: 'Landing Page',
-    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop', // Data/Dashboard
+    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1200&auto=format&fit=crop', 
   },
   {
     title: 'Lumina Tech Summit 26',
     category: 'Event Website',
-    image: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?q=80&w=2070&auto=format&fit=crop', // Event/Stage
+    image: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?q=80&w=1200&auto=format&fit=crop', 
   },
   {
     title: 'Aura Lifestyle',
     category: 'Digital Catalogue',
-    image: 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?q=80&w=2070&auto=format&fit=crop', // Fashion/Apparel
+    image: 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?q=80&w=1200&auto=format&fit=crop', 
   }
 ];
 
@@ -69,6 +69,8 @@ export function PortfolioPreview() {
               <img 
                 src={project.image} 
                 alt={project.title} 
+                loading="lazy"
+                decoding="async"
                 className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" 
               />
               <div className="absolute bottom-0 left-0 w-full p-6 md:p-8 z-20 flex justify-between items-end translate-y-0 md:translate-y-4 md:group-hover:translate-y-0 transition-transform duration-500">
