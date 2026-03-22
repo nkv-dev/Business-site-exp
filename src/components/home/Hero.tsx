@@ -77,9 +77,9 @@ export function Hero() {
             variants={itemVariants} 
             className="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto"
           >
-            <Button size="lg" className="w-full sm:w-auto rounded-full bg-primary text-primary-foreground hover:bg-primary/90 shadow-[0_0_30px_rgba(168,85,247,0.4)] hover:shadow-[0_0_40px_rgba(168,85,247,0.6)] transition-all h-14 px-8 text-lg font-medium group">
+            <Button size="lg" className="w-full sm:w-auto rounded-full bg-primary text-primary-foreground hover:bg-primary/90 shadow-[0_0_30px_rgba(168,85,247,0.4)] hover:shadow-[0_0_45px_rgba(168,85,247,0.6)] hover:-translate-y-1 transition-all duration-300 h-14 px-8 text-lg font-medium group">
               Start Your Project
-              <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1.5 transition-transform" />
             </Button>
             <Button size="lg" variant="outline" className="w-full sm:w-auto rounded-full border-border/50 bg-background/50 hover:bg-white/10 backdrop-blur-md h-14 px-8 text-lg font-medium transition-colors">
               View Our Work

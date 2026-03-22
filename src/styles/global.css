@@ -46,6 +46,39 @@
     --radius-2xl: calc(var(--radius) * 1.8);
     --radius-3xl: calc(var(--radius) * 2.2);
     --radius-4xl: calc(var(--radius) * 2.6);
+    --animate-float: float 8s ease-in-out infinite;
+    --animate-float-slow: float 12s ease-in-out infinite reverse;
+    --animate-pulse-glow: pulse-glow 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    --animate-stagger-fade: stagger-fade 0.5s ease-out forwards;
+
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0) scale(1);
+      }
+      50% {
+        transform: translateY(-20px) scale(1.05);
+      }
+    }
+
+    @keyframes pulse-glow {
+      0%, 100% {
+        box-shadow: 0 0 20px rgba(168, 85, 247, 0.5);
+      }
+      50% {
+        box-shadow: 0 0 35px rgba(168, 85, 247, 0.8);
+      }
+    }
+
+    @keyframes stagger-fade {
+      from {
+        opacity: 0;
+        transform: translateX(-10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
 }
 
 :root, .dark {
@@ -110,7 +143,10 @@
     @apply bg-white/5 backdrop-blur-xl border border-white/10 shadow-2xl;
   }
   .glass-card {
-    @apply bg-background/60 backdrop-blur-xl border border-border/50 shadow-xl;
+    @apply bg-background/60 backdrop-blur-xl border border-border/50 shadow-xl transition-all duration-500;
+  }
+  .glass-card:hover {
+    @apply border-primary/30 shadow-[0_8px_40px_rgba(168,85,247,0.15)] -translate-y-1.5;
   }
   .text-gradient {
     @apply bg-clip-text text-transparent bg-gradient-to-r from-[oklch(0.65_0.25_290)] to-[oklch(0.70_0.15_220)];
