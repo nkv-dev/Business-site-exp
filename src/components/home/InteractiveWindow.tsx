@@ -90,7 +90,7 @@ export function InteractiveWindow() {
             <div className="w-[60%] h-10 rounded-lg bg-foreground/10 mb-4" />
             
             <div className="w-full flex-1 rounded-xl border border-primary/20 bg-gradient-to-br from-primary/10 to-transparent flex items-center justify-center relative overflow-hidden">
-                <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(168,85,247,0.15)_0%,transparent_70%)]" />
+                <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(108,92,231,0.15)_0%,transparent_70%)]" />
                 <Code2 size={64} className="text-primary/50" />
             </div>
         </div>

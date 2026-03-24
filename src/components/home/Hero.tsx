@@ -37,7 +37,7 @@ export function Hero() {
           opacity: [0.15, 0.25, 0.15]
         }}
         transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
-        className="absolute bottom-1/4 right-1/4 w-[18rem] h-[18rem] md:w-[35rem] md:h-[35rem] bg-indigo-500/20 rounded-full blur-[60px] md:blur-[120px] pointer-events-none origin-top-left will-change-transform" 
+        className="absolute bottom-1/4 right-1/4 w-[18rem] h-[18rem] md:w-[35rem] md:h-[35rem] bg-primary/20 rounded-full blur-[60px] md:blur-[120px] pointer-events-none origin-top-left will-change-transform" 
       />
 
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-[50rem] bg-[radial-gradient(ellipse_at_center,rgba(128,128,128,0.1)_0%,transparent_70%)] pointer-events-none" />
@@ -79,7 +79,7 @@ export function Hero() {
             variants={itemVariants} 
             className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 w-full sm:w-auto"
           >
-            <Button size="lg" className="w-full sm:w-auto rounded-full bg-primary text-primary-foreground hover:bg-primary/90 shadow-[0_0_30px_rgba(168,85,247,0.4)] hover:shadow-[0_0_45px_rgba(168,85,247,0.6)] hover:-translate-y-1 transition-all duration-300 h-14 px-8 text-lg font-medium group">
+            <Button size="lg" className="w-full sm:w-auto rounded-full bg-primary text-primary-foreground hover:bg-primary/90 shadow-[0_0_30px_rgba(108,92,231,0.4)] hover:shadow-[0_0_45px_rgba(108,92,231,0.6)] hover:-translate-y-1 transition-all duration-300 h-14 px-8 text-lg font-medium group">
               Start Your Project
               <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1.5 transition-transform" />
             </Button>

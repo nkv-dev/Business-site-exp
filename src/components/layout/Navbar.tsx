@@ -54,7 +54,7 @@ export function Navbar() {
           ))}
           <div className="flex items-center gap-4">
             <ThemeToggle />
-            <Button className="rounded-full px-6 bg-primary text-primary-foreground hover:bg-primary/90 shadow-[0_0_20px_rgba(168,85,247,0.4)] hover:shadow-[0_0_30px_rgba(168,85,247,0.6)] hover:-translate-y-0.5 transition-all duration-300">
+            <Button className="rounded-full px-6 bg-primary text-primary-foreground hover:bg-primary/90 shadow-[0_0_20px_rgba(108,92,231,0.4)] hover:shadow-[0_0_30px_rgba(108,92,231,0.6)] hover:-translate-y-0.5 transition-all duration-300">
               Get Started
             </Button>
           </div>
